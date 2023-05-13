@@ -2,15 +2,20 @@
   <v-app id="inspire">
     <v-navigation-drawer color="grey lighten-3" v-model="drawer" app>
       <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Hello ! {{ name }}
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Welcome back
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6">
+              Hello !
+              <router-link to="/Login">
+                <v-icon class="">
+                  mdi-login
+                </v-icon>
+              </router-link>
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              If you not are registed 
+            </v-list-item-subtitle>
+          </v-list-item-content>  
+        </v-list-item>
 
       <v-divider></v-divider>
 
@@ -51,12 +56,13 @@ export default {
 
   data: () => ({
     //
-    name: 'Agustin',
+    name: '',
     drawer: null,
     items: [
       { title: 'To-Do List', icon: 'mdi-format-list-checks', to: '/#' },
       { title: 'About', icon: 'mdi-help-box', to: '/about' },
-    ],
+      
+    ]
   }),
 };
 </script>

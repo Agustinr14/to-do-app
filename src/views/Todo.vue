@@ -55,12 +55,16 @@ export default {
   methods: {
     addTask(){
       let newTask ={
-        id: Date.now(),
-        title: this.newTaskTitle,
-        done: false
-      }
+      id: Date.now(),
+      title: this.newTaskTitle,
+      done: false
+     }
+      if(newTask.title != ''){
       this.tasks.push(newTask)
       this.newTaskTitle = ''
+      }else{
+        alert('Empty task')
+      }
     },
     doneTask(id) {
       let task = this.tasks.filter(task => task.id === id)[0]

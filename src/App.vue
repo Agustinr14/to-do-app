@@ -59,7 +59,7 @@ export default {
     name: '',
     drawer: null,
     items: [
-      { title: 'To-Do List', icon: 'mdi-format-list-checks', to: '/#' },
+      { title: 'To-Do List', icon: 'mdi-format-list-checks', to: '/' },
       { title: 'About', icon: 'mdi-help-box', to: '/about' },
       
     ]

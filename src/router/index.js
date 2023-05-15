@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Todo from '../views/Todo.vue'
 import LoginPage from '../views/LoginPage.vue'
+import Completati from '../views/Completati.vue'
 
 Vue.use(VueRouter)
 
@@ -23,7 +24,13 @@ const routes = [
     path:'/Login',
     name:'LoginPage',
     component: LoginPage
+  },
+  {
+    path:'/completati',
+    name:'Completati',
+    component: Completati
   }
+
 ]
 
 const router = new VueRouter({

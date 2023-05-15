@@ -2,19 +2,27 @@
   <v-app id="inspire">
     <v-navigation-drawer color="grey lighten-3" v-model="drawer" app>
       <v-list-item>
-          <v-list-item-content>
+          <v-list-item-content v-if="name === ''">
             <v-list-item-title class="text-h6">
-              Hello !
-              <router-link to="/Login">
+              Hello {{name}}!
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              If you not are login
+               <router-link to="/Login">
                 <v-icon class="">
                   mdi-login
                 </v-icon>
               </router-link>
+            </v-list-item-subtitle>
+          </v-list-item-content> 
+          <v-list-item-content v-else>
+            <v-list-item-title class="text-h6">
+              Welcome back !
             </v-list-item-title>
             <v-list-item-subtitle>
-              If you not are registed 
+              {{ name }}
             </v-list-item-subtitle>
-          </v-list-item-content>  
+          </v-list-item-content> 
         </v-list-item>
 
       <v-divider></v-divider>
@@ -44,6 +52,7 @@
     <v-main>
       <!--  -->
       <router-view></router-view>
+      <snackbar/>
     </v-main>
   </v-app>
 </template>
@@ -56,13 +65,17 @@ export default {
 
   data: () => ({
     //
-    name: '',
+    name: 'Agustin',
     drawer: null,
     items: [
       { title: 'To-Do List', icon: 'mdi-format-list-checks', to: '/' },
-      { title: 'About', icon: 'mdi-help-box', to: '/about' },
+      { title: 'Completati', icon:'mdi-check-all', to:'/completati'},
+      { title: 'About', icon: 'mdi-help-box', to: '/about' }
       
     ]
   }),
+  components:{
+    'snackbar':require('@/components/Utils/Snackbar.vue').default
+  }
 };
 </script>

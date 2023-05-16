@@ -2,9 +2,9 @@
   <v-app id="inspire">
     <v-navigation-drawer color="grey lighten-3" v-model="drawer" app>
       <v-list-item>
-          <v-list-item-content v-if="name === ''">
+          <v-list-item-content v-if="$store.state.user.firstName === ''" >
             <v-list-item-title class="text-h6">
-              Hello {{name}}!
+              Hello!
             </v-list-item-title>
             <v-list-item-subtitle>
               If you not are login
@@ -20,7 +20,7 @@
               Welcome back !
             </v-list-item-title>
             <v-list-item-subtitle>
-              {{ name }}
+              {{$store.state.user.firstName}}
             </v-list-item-subtitle>
           </v-list-item-content> 
         </v-list-item>
@@ -62,10 +62,8 @@
 
 export default {
   name: 'App',
-
   data: () => ({
     //
-    name: 'Agustin',
     drawer: null,
     items: [
       { title: 'To-Do List', icon: 'mdi-format-list-checks', to: '/' },

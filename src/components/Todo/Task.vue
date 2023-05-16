@@ -22,27 +22,28 @@
 
     </v-list-item>
     <v-divider></v-divider>
-    
+    <dialogs-completed v-if="dialogs.complete" @close="dialogs.complete = false" :task="task" :user="user"/>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['task'],
+  props: ['task', 'user'],
   data(){
     return{
       dialogs: {
-        delete: false
+        complete: false
       }
     }
   },
   components: {
     'task-menu': require('@/components/Todo/TaskMenu.vue').default,
+    'dialogs-completed':require('@/components/Todo/Dialogs/DialogsCompleted.vue').default
 
   },
   methods:{
     taskArchiviati(){
-      alert('task archiviata')
+      this.dialogs.complete = true
     }
   }
 }

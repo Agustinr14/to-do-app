@@ -11,7 +11,14 @@ export default new Vuex.Store({
     snackbar:{
       show:false,
       text:''
+    },
+    completedTasks:[
+
+    ],
+    user:{
+      firstName:''
     }
+
   },
   getters: {
   },
@@ -20,7 +27,8 @@ export default new Vuex.Store({
       let newTask ={
       id: Date.now(),
       title: newTaskTitle,
-      done: false
+      done: false,
+      by:state.user.firstName
      }
       if(newTask.title != ''){
       state.tasks.push(newTask)
@@ -38,6 +46,19 @@ export default new Vuex.Store({
     editTask(state,payload){
       let task = state.tasks.filter(task => task.id === payload.id)[0]
       task.title = payload.title
+    },
+    completedTask(state,payload){
+      console.log(state.user);
+      let task = state.tasks.filter(task => task.id === payload.id)[0]
+      state.completedTasks.push(task)
+      
+      console.log(state.completedTasks);
+    },
+    userLogin(state,firstName){
+      if(state.user.firstName === ''){
+        state.user.firstName = firstName
+        console.log(state.user);
+      }
     },
     showSnackBar(state, text){
       let timeout = 0
@@ -60,9 +81,17 @@ export default new Vuex.Store({
     commit('deleteTask', id)
     commit('showSnackBar', 'Task deleted.')
    },
+   removeTask({commit},id){
+    commit('deleteTask',id)
+    
+   },
    editTask({commit},payload){
     commit('editTask',payload)
     commit('showSnackBar', 'Task edit.')
+   },
+   completedTask({commit},payload){
+    commit('completedTask',payload)
+    commit('showSnackBar', 'Task Archivated')
    }
   },
   modules: {

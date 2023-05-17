@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 //esli
 <template>
-  <div class="home">
+  <div class="Done">
     <task-complete-page v-if="$store.state.completedTasks.length" />
   </div>
 </template>

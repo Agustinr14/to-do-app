@@ -9,9 +9,11 @@
           </v-list-item-title>
         
         </v-list-item-content>
-
         <v-list-item-content>
-          <v-list-item-title>Done by :  {{completedTask.by}}</v-list-item-title>
+          <v-list-item-title>Created by :  {{completedTask.createdBy}}</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-content>
+          <v-list-item-title>Done by :  {{completedTask.doneBy}}</v-list-item-title>
         </v-list-item-content>
       </template>
       

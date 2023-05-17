@@ -6,14 +6,20 @@
           <v-list-item-action>
             <v-checkbox :input-value="task.done"></v-checkbox>
           </v-list-item-action>
-          <v-list-item-action v-if="task.done">
-            <v-icon class="pr-4" @click="taskArchiviati()">mdi-archive-arrow-down-outline</v-icon>
+          <v-list-item-action v-if="task.done ">
+            <v-btn icon>
+              <v-icon @click="taskArchiviati()">mdi-archive-arrow-down-outline</v-icon>
+            </v-btn>
+
           </v-list-item-action>
 
         <v-list-item-content>
           <v-list-item-title :class="{ 'text-decoration-line-through' : task.done }">
             {{ task.title }}
           </v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-content>
+          <v-list-item-subtitle>Create by: {{ task.createdBy }}</v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
           <task-menu :task="task" />
@@ -43,6 +49,7 @@ export default {
   },
   methods:{
     taskArchiviati(){
+      
       this.dialogs.complete = true
     }
   }

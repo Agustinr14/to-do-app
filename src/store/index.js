@@ -15,8 +15,9 @@ export default new Vuex.Store({
     completedTasks:[
 
     ],
-    user:{
-      firstName:''
+    user: {
+      firstName:'',
+      lastName:''
     }
 
   },
@@ -28,7 +29,8 @@ export default new Vuex.Store({
       id: Date.now(),
       title: newTaskTitle,
       done: false,
-      by:state.user.firstName
+      createdBy: state.user.firstName + ' '+ state.user.lastName,
+      doneBy: ''
      }
       if(newTask.title != ''){
       state.tasks.push(newTask)
@@ -50,16 +52,21 @@ export default new Vuex.Store({
     completedTask(state,payload){
       console.log(state.user);
       let task = state.tasks.filter(task => task.id === payload.id)[0]
+      task.doneBy = state.user.firstName+ ' '+ state.user.lastName
       state.completedTasks.push(task)
-      
-      console.log(state.completedTasks);
+            console.log(state.completedTasks);
     },
-    userLogin(state,firstName){
-      if(state.user.firstName === ''){
-        state.user.firstName = firstName
+    userLogin(state,payload){
+        console.log(payload.firstname)
+        state.user.firstName = payload.firstname
+        state.user.lastName = payload.lastname
         console.log(state.user);
+      },
+      userLogout(state){
+        state.user.firstName = ''
+        state.user.lastName = ''
       }
-    },
+    ,
     showSnackBar(state, text){
       let timeout = 0
       if(state.snackbar.show){

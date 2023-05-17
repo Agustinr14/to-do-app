@@ -4,13 +4,13 @@
             <v-card-title class="text-h5">
                 Task Completed
             </v-card-title>
-            <v-card-text>Are you sure you want archived this task completed?</v-card-text>
+            <v-card-text>Are you sure you want to archive this task completed?</v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="primary lighten-3" text @click="$emit('close')">
                     Cancel
                 </v-btn>
-                <v-btn color="Warning" text @click="completedTask()">
+                <v-btn color="Warning" text @click="completedTask()" >
                     Archived
                 </v-btn>
             </v-card-actions>
@@ -32,7 +32,9 @@ export default {
                 id:this.task.id,
                 title: this.task.taskTitle,
                 done: this.task.done,
-                by: this.task.by
+                createdBy: this.task.createdBy,
+                doneBy: this.task.doneBy
+
             }
             this.$store.dispatch('completedTask',payload)
             this.$store.dispatch('removeTask',this.task.id)

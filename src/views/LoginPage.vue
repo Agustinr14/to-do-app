@@ -17,7 +17,7 @@
                                 required></v-text-field>
                         </v-col>
                         <v-col cols="12" md="4">
-                            <v-btn class="mr-4" type="submit" @click="submit()" >
+                            <v-btn class="mr-4" type="submit" @click="userLogin()" >
                                 submit
                             </v-btn>
                         </v-col>
@@ -30,15 +30,24 @@
 
 <script>
 export default {
-    data: () => ({
-        firstName : '',
-        lastName:''
 
-    }),
-    methods: {
-        submit(){
-           this.$store.commit('userLogin',this.firstName)
+    data(){
+        return{
+            firstName:'',
+            lastName:''
         }
     },
+    methods: {
+        userLogin(){
+            let payload ={
+                firstname : this.firstName,
+                lastname : this.lastName
+            }
+           this.$store.commit('userLogin',payload)
+           console.log(payload.firstname)
+           this.$router.push('/')
+        }
+    },
+
 }
 </script>
